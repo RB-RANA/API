@@ -14,6 +14,7 @@ await mongobd.connect(dbUrl , {
     useUnifiedTopology: true,
     useNewUrlParser: true
   })
+  await Product.deleteMany()
 await Product.create(productJson)
 console.log('Success')
 
