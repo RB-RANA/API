@@ -1,15 +1,36 @@
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
 
-const mongoose = require('mongoose')
+const userSchema = new Schema({
 
-const userSchema = new mongoose.Schema({
-
-    id:{
+    _id: {
+        type: Schema.Types.ObjectId,
+        default: () => new mongoose.Types.ObjectId(),
+        required: true
+      },
+      stock:{
         type: Number,
         required: true,
-    },
-    name:{
+      },
+    title:{
         type: String,
+        required: true,
+    },
+    description:{
+        type: String,
+        required: true,
+    },
+    Image:{
+        type: String,
+        required: true,
+    },
+    images:{
+    type:Array,
+    default:[]
+    },
+    star:{
+        type: Number,
         required: true,
     },
     price:{
@@ -20,14 +41,22 @@ const userSchema = new mongoose.Schema({
         type:Boolean,
         default:false,
     },
-    rating:{
-        type:Object,
-        default:4.9
-    },
-    comapny:{
+    reviews:{
         type:String,
-        values:['Chanel','Gucci','Nike','Ralph Lauren','Adidas'],
-        message: `{values} Breand in onlay suppured`
+        default:'20'
+    },
+    Vendor:{
+        type:String,
+        default:'apple',
+       
+    },
+    size:{
+        type: Array,
+        default: ['SM','L','XL','XXL'],
+    },
+    color:{
+        type: Array,
+        default: ['red','blue','green'],
     },
     creatDate:{
         type:Date,
