@@ -3,12 +3,12 @@ const { query } = require('express');
 const Products = require('../Model/ProductSchema')
 
 const getAllProduct = async (req,res)=>{
-    const {name,sort,select} = req.query
+    const {_id,sort,select} = req.query
 
     const queryOpject ={}
 
-    if(name){
-        queryOpject.name = {$regex: name, $options: 'i'};
+    if(_id){
+        queryOpject._id = { _id};
     }
 
     let apiData =  Products.find(queryOpject);
