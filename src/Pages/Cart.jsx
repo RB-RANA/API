@@ -1,12 +1,17 @@
 import React from 'react'
 import { MdDelete } from 'react-icons/md';
 import images from '../Photos';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AiOutlineRollback } from 'react-icons/ai';
 
 
 const Cart = () => {
+  const history = useNavigate()
   return (
     <div className="min-h-screen bg-gray-100">
+       <div className="absolute text-3xl cursor-pointer left-7 top-20" onClick={() => history(-1)}>
+          <span><AiOutlineRollback /></span>
+        </div>
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <div className="bg-white shadow-md rounded-lg">
           <div className="overflow-x-auto">
@@ -35,7 +40,7 @@ const Cart = () => {
                         <img
                           className="h-10 w-10 rounded-full"
                           src={images.Product_1}
-                          alt="Product Image"
+                          alt="Product not found"
                         />
                       </div>
                       <div className="ml-4">
@@ -61,7 +66,7 @@ const Cart = () => {
                         <img
                           className="h-10 w-10 rounded-full"
                           src={images.Product_2}
-                          alt="Product Image"
+                          alt="Product not found"
                         />
                       </div>
                       <div className="ml-4">

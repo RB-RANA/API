@@ -13,13 +13,15 @@ isLoading: false,
 isError: false,
 product: [],
 featureProduct: [],
+singleProducts: {},
 }
+
 
 
 const AppProvider = ({children}) =>{
 
     const [state,dispatch] = useReducer(reducer,initiaState);
-
+    
     const getProducts = async (url)=>{
         dispatch({type:'SET_LOADING'});
        try {
@@ -34,13 +36,32 @@ const AppProvider = ({children}) =>{
        }
     }
 
+// call singile Product
+
+const singleProductfun = async (url)=>{
+   
+    dispatch({type:'SET_LOADING'});
+try {
+    const res = await axios.get(url);
+   
+    const singleProduct = await res.data.mydata[0];
+
+    dispatch({type:'SINGEL_PRODUCT', payload: singleProduct});
+} catch (error) {
+    dispatch({type:'SINGLE_ERROR'});
+}
+
+}
+
+
+
     useEffect(()=>{
 
     getProducts(API);
 
     },[])
 
-return <AppContext.Provider value={{...state}}>{children}</AppContext.Provider>
+return <AppContext.Provider value={{...state,singleProductfun}}>{children}</AppContext.Provider>
 
 };
 

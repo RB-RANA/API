@@ -19,9 +19,8 @@ if(isLoading){
       <div className="grid grid-cols-3 gap-5">
 {
   featureProduct.map((item,index)=> (
-   
-<Link key={index} to="Single"><div className='h-[55vh] bg-cover' style={Background(item.Image)}>
-      hello world
+<Link key={item._id} to={`Single/${item._id}`}><div className='h-[55vh] bg-cover' style={Background(item.Image)}>
+   hello
       </div></Link>
   ))
   }

@@ -8,7 +8,6 @@ import { useState } from 'react';
 
 const ProductPage = () => {
   const [backgrount,setbackgrount] = useState(true)
-  console.log(backgrount)
   return (
     <div className='px-10 pt-5'>
       <div className='wrapr flex gap-10 '>
