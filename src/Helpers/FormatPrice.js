@@ -8,3 +8,4 @@ const FormatPrice =({price})=>{
 }
 
 export default FormatPrice
+

@@ -39,7 +39,6 @@ const SingleProduct = () => {
   const [amount,setamount] = useState(1)
 // ==================== Function ========================
 
-console.log(amount)
   const handleClick = (img,subImages) => {
     setcover(img);
     srbsetimage(subImages);
@@ -86,7 +85,7 @@ console.log(amount)
               {
                 subimage?.map((item, indes) => (
 
-                  <div className='w-14 h-14 overflow-hidden cursor-pointer border border-slate-950 rounded-md' onClick={()=>setshowing(item)}>
+                  <div key={indes} className='w-14 h-14 overflow-hidden cursor-pointer border border-slate-950 rounded-md' onClick={()=>setshowing(item)}>
                         <img
                           className="h-full w-full object-cover md:w-96"
                           src={item}

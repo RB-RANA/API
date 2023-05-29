@@ -1,11 +1,11 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useEffect, useReducer } from "react";
 import { useProductContext } from "./ProductContext";
-
+import reducer from '../Reducer/FilterReducer'
 
 const FilterContext = createContext()
-const reducer = ()=>{}
 
-const  initialstate ={
+
+const initialstate ={
     filter_productes : [],
     all_productes : []
 }
@@ -13,8 +13,13 @@ const  initialstate ={
 export const FilterProvider = ({children})=>{
 
  const { product } = useProductContext();
-console.log(product)
+ 
  const [state,dispatch] = useReducer(reducer,initialstate);
+
+useEffect(()=>{
+dispatch({type:'LODE_FILTER_PRODUCT', paylode:product})
+},[product])
+
 
     return <FilterContext.Provider value={{...state}}>{children}</FilterContext.Provider>;
 }
